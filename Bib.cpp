@@ -1,4 +1,11 @@
-#include "Bib.hpp"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
+#include <iostream>
+#include <locale.h>
+#include <time.h>
+
+using namespace std;
 
 void limpaTela(){
     system("CLS");
@@ -15,6 +22,31 @@ char menuPrincipal(){
     cin >> opcao;
 
     return opcao;
+}
+
+
+string retornaPalavraComMascara(string palavraAleatoria, int tamanhoDaPalavra){
+
+    int cont = 0;
+    string palavraComMascara;
+
+    while(cont < tamanhoDaPalavra){
+        palavraComMascara += "_";
+        cont++;
+    }
+    return palavraComMascara;
+}
+
+
+string retornaPalavraAleatoria(){
+
+    string palavras[8] = {"abacaxi", "manga", "morango", "uva", "banana", "pera", "laranja"}; //Banco de palavras a ser sorteado
+
+    srand(time(NULL)); //Função de gerar número aleatório
+
+    int indiceAleatorio = rand() % 8;
+
+    return palavras[indiceAleatorio];
 }
 
 void exibeStatus(string palavraComMascara, int tamanhoDaPalavra, int tentativasRestantes, string letrasUsadas, string mensagem){
@@ -104,28 +136,4 @@ int jogarSozinho(){
     cout << "Deseja jogar novamente?\n1 - Sim\n2 - Não\n";
     cin >> reiniciar;
     return reiniciar;
-}
-
-string retornaPalavraComMascara(string palavraAleatoria, int tamanhoDaPalavra){
-
-    int cont = 0;
-    string palavraComMascara;
-
-    while(cont < tamanhoDaPalavra){
-        palavraComMascara += "_";
-        cont++;
-    }
-    return palavraComMascara;
-}
-
-
-string retornaPalavraAleatoria(){
-
-    string palavras[8] = {"abacaxi", "manga", "morango", "uva", "banana", "pera", "laranja"}; //Banco de palavras a ser sorteado
-
-    srand(time(NULL)); //Função de gerar número aleatório
-
-    int indiceAleatorio = rand() % 8;
-
-    return palavras[indiceAleatorio];
 }
